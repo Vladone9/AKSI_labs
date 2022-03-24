@@ -160,7 +160,7 @@ int main()
 
 
 	// создаем список указателей из контейнера map
-	for (itr = maap.mp.begin(); itr != maap.mp.end(); ++itr)   // mp - название контейнера
+	for (itr = maap.mp.begin(); itr != maap.mp.end(); ++itr)
 	{
 		Uzel* ptr = new Uzel;    // создаем указатель типа Uzel
 		ptr->s = itr->first;     // присваиваем поле контейнеру (first это символ)
