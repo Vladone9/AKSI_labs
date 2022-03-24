@@ -11,10 +11,10 @@ using namespace std;
 class Grani
 {
 public:
-	char c;             // символ
-	unsigned int key;   // частотность
-	int left;           // левая граница
-	int right;          // правая граница
+	char c;             // СЃРёРјРІРѕР»
+	unsigned int key;   // Г·Г Г±ГІГ®ГІГ­Г®Г±ГІГј
+	int left;           // Г«ГҐГўГ Гї ГЈГ°Г Г­ГЁГ¶Г 
+	int right;          // ГЇГ°Г ГўГ Гї ГЈГ°Г Г­ГЁГ¶Г 
 };
 
 class MapKeys
@@ -24,24 +24,24 @@ public:
 
 	void CreateMap(ifstream& f)
 	{
-		// создаем контейнер map
-		// символ представляется как индекс
-		// и по этому индексу значение ячейки увеличивается на 1
-		// то есть ищем кол-во вхождений символа в текст (частотность)
+		// Г±Г®Г§Г¤Г ГҐГ¬ ГЄГ®Г­ГІГҐГ©Г­ГҐГ° map
+		// Г±ГЁГ¬ГўГ®Г« ГЇГ°ГҐГ¤Г±ГІГ ГўГ«ГїГҐГІГ±Гї ГЄГ ГЄ ГЁГ­Г¤ГҐГЄГ±
+		// ГЁ ГЇГ® ГЅГІГ®Г¬Гі ГЁГ­Г¤ГҐГЄГ±Гі Г§Г­Г Г·ГҐГ­ГЁГҐ ГїГ·ГҐГ©ГЄГЁ ГіГўГҐГ«ГЁГ·ГЁГўГ ГҐГІГ±Гї Г­Г  1
+		// ГІГ® ГҐГ±ГІГј ГЁГ№ГҐГ¬ ГЄГ®Г«-ГўГ® ГўГµГ®Г¦Г¤ГҐГ­ГЁГ© Г±ГЁГ¬ГўГ®Г«Г  Гў ГІГҐГЄГ±ГІ (Г·Г Г±ГІГ®ГІГ­Г®Г±ГІГј)
 		for (char c = f.get(); c != EOF; c = f.get())
 		{
 			mp[c]++;
 		}
 		f.clear();
-		f.seekg(0);   // возвращаем указатель в начало файла
+		f.seekg(0);   // ГўГ®Г§ГўГ°Г Г№Г ГҐГ¬ ГіГЄГ Г§Г ГІГҐГ«Гј Гў Г­Г Г·Г Г«Г® ГґГ Г©Г«Г 
 	}
 
 	void PrintMap()
 	{
-		// begin() и end() это начало и конец контейнера map
-		// проходимся итератором по контейнеру и печатаем содержимое
-		// it->first - печатаем символ char
-		// it->second - частотность символа
+		// begin() ГЁ end() ГЅГІГ® Г­Г Г·Г Г«Г® ГЁ ГЄГ®Г­ГҐГ¶ ГЄГ®Г­ГІГҐГ©Г­ГҐГ°Г  map
+		// ГЇГ°Г®ГµГ®Г¤ГЁГ¬Г±Гї ГЁГІГҐГ°Г ГІГ®Г°Г®Г¬ ГЇГ® ГЄГ®Г­ГІГҐГ©Г­ГҐГ°Гі ГЁ ГЇГҐГ·Г ГІГ ГҐГ¬ Г±Г®Г¤ГҐГ°Г¦ГЁГ¬Г®ГҐ
+		// it->first - ГЇГҐГ·Г ГІГ ГҐГ¬ Г±ГЁГ¬ГўГ®Г« char
+		// it->second - Г·Г Г±ГІГ®ГІГ­Г®Г±ГІГј Г±ГЁГ¬ГўГ®Г«Г 
 		map<char, int>::iterator it;
 		for (it = mp.begin(); it != mp.end(); it++)
 		{
@@ -67,8 +67,8 @@ bool compare(Grani obj1, Grani obj2)
 
 int main()
 {
-	ifstream fin("text.txt", ios::binary);      // исходный текст
-	ofstream fout("encode.txt", ios::binary);   // результат кодирования
+	ifstream fin("text.txt", ios::binary);      // ГЁГ±ГµГ®Г¤Г­Г»Г© ГІГҐГЄГ±ГІ
+	ofstream fout("encode.txt", ios::binary);   // Г°ГҐГ§ГіГ«ГјГІГ ГІ ГЄГ®Г¤ГЁГ°Г®ГўГ Г­ГЁГї
 
 	MapKeys maap;
 	maap.CreateMap(fin);
@@ -82,20 +82,20 @@ int main()
 
 
 
-	// переписываем содержимое контейнера map в список
+	// ГЇГҐГ°ГҐГЇГЁГ±Г»ГўГ ГҐГ¬ Г±Г®Г¤ГҐГ°Г¦ГЁГ¬Г®ГҐ ГЄГ®Г­ГІГҐГ©Г­ГҐГ°Г  map Гў Г±ГЇГЁГ±Г®ГЄ
 	for (itr = maap.mp.begin(); itr != maap.mp.end(); itr++)
 	{
 		Grani tmp;
-		tmp.c = itr->first;      // it->first - символ char
-		tmp.key = itr->second;   // it->second - частотность
+		tmp.c = itr->first;      // it->first - Г±ГЁГ¬ГўГ®Г« char
+		tmp.key = itr->second;   // it->second - Г·Г Г±ГІГ®ГІГ­Г®Г±ГІГј
 		count += tmp.key;
-		spisok.push_back(tmp);   // помещаем в конец списка
+		spisok.push_back(tmp);   // ГЇГ®Г¬ГҐГ№Г ГҐГ¬ Гў ГЄГ®Г­ГҐГ¶ Г±ГЇГЁГ±ГЄГ 
 	}
-	spisok.sort(compare);        // сортируем список (по убыванию)
+	spisok.sort(compare);        // Г±Г®Г°ГІГЁГ°ГіГҐГ¬ Г±ГЇГЁГ±Г®ГЄ (ГЇГ® ГіГЎГ»ГўГ Г­ГЁГѕ)
 
 
 
-	// выводим содержимое списка
+	// ГўГ»ГўГ®Г¤ГЁГ¬ Г±Г®Г¤ГҐГ°Г¦ГЁГ¬Г®ГҐ Г±ГЇГЁГ±ГЄГ 
 	cout << "spisok:" << endl;
 	int temp = 0;
 	for (auto i = spisok.begin(); i != spisok.end(); i++)
@@ -114,25 +114,25 @@ int main()
 
 
 
-	// выписываем контейнер в файл
+	// ГўГ»ГЇГЁГ±Г»ГўГ ГҐГ¬ ГЄГ®Г­ГІГҐГ©Г­ГҐГ° Гў ГґГ Г©Г«
 	int k = maap.mp.size();
-	fout.write((char*)&k, sizeof(k));   // записываем количество символов элементов
+	fout.write((char*)&k, sizeof(k));   // Г§Г ГЇГЁГ±Г»ГўГ ГҐГ¬ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г±ГЁГ¬ГўГ®Г«Г®Гў ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў
 	for (itr = maap.mp.begin(); itr != maap.mp.end(); itr++)
 	{
-		fout.write((char*)&itr->first, sizeof(itr->first));     // пишем символ
-		fout.write((char*)&itr->second, sizeof(itr->second));   // пишем кол-во
+		fout.write((char*)&itr->first, sizeof(itr->first));     // ГЇГЁГёГҐГ¬ Г±ГЁГ¬ГўГ®Г«
+		fout.write((char*)&itr->second, sizeof(itr->second));   // ГЇГЁГёГҐГ¬ ГЄГ®Г«-ГўГ®
 	}
 
 
 
 	list<Grani>::iterator gr;
-	unsigned short l = 0;      // нижняя граница
-	unsigned short h = 65535;  // верхняя граница
-	int delitel = spisok.back().right;   // back() - указатель на последний элемент
+	unsigned short l = 0;      // Г­ГЁГ¦Г­ГїГї ГЈГ°Г Г­ГЁГ¶Г 
+	unsigned short h = 65535;  // ГўГҐГ°ГµГ­ГїГї ГЈГ°Г Г­ГЁГ¶Г 
+	int delitel = spisok.back().right;   // back() - ГіГЄГ Г§Г ГІГҐГ«Гј Г­Г  ГЇГ®Г±Г«ГҐГ¤Г­ГЁГ© ГЅГ«ГҐГ¬ГҐГ­ГІ
 	unsigned short first = (h + 1) / 4;   //16384
 	unsigned short half = first * 2;	  //32768
 	unsigned short thride = first * 3;    //49152
-	int bitsf = 0;   // сколько битов сбрасывать
+	int bitsf = 0;   // Г±ГЄГ®Г«ГјГЄГ® ГЎГЁГІГ®Гў Г±ГЎГ°Г Г±Г»ГўГ ГІГј
 	char tmp = 0;
 	int ncount = 0;
 
@@ -145,8 +145,8 @@ int main()
 		}
 		for (gr = spisok.begin(); (gr != spisok.end()) && (gr->c != c); gr++);
 		int d = h - l + 1;
-		h = l + gr->right * d / delitel - 1;  // верхняя граница
-		l = l + gr->left * d / delitel;       // нижняя граница
+		h = l + gr->right * d / delitel - 1;  // ГўГҐГ°ГµГ­ГїГї ГЈГ°Г Г­ГЁГ¶Г 
+		l = l + gr->left * d / delitel;       // Г­ГЁГ¦Г­ГїГї ГЈГ°Г Г­ГЁГ¶Г 
 
 		while (1)
 		{
